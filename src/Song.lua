@@ -167,19 +167,6 @@ function Song:_parse(event)
 end
 
 
-    elseif (eventName == "control_change") then
-        if event[4] == 64 then
-            if event[5] > getgenv().sustainOffset then
-                Sustain.Press()
-            else
-                Sustain.Release()
-            end
-        end
-    else
-        
-    end
-end
-
 
 function Song.FromTitle(midiTitle)
     return Song.new("midi/" .. midiTitle .. ".mid")
