@@ -149,20 +149,8 @@ if (eventName == "set_tempo") then
     elseif (eventName == "note") then
         Input.Hold(event[5], event[3] / self.Timebase)
     end
+ end
         
-
-    elseif (eventName == "control_change") then
-        if event[4] == 64 then
-            if event[5] > getgenv().sustainOffset then
-                Sustain.Press()
-            else
-                Sustain.Release()
-            end
-        end
-    else
-        
-    end
-end
 
 
 function Song.FromTitle(midiTitle)
