@@ -7,7 +7,7 @@
 local Song = {}
 Song.__index = Song
 Song.Speed = 1
-Song.MissPercent = 0
+Song.MissPercent = 0.000000000000000000000000000000000000000000000000000000001
 
 local MIDI = require(script.Parent.MIDI)
 local Sustain = require(script.Parent.Sustain)
