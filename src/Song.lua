@@ -158,7 +158,7 @@ function Song:_parse(event)
             end)
         
         else
-            Input.Hold(event[5], event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6])
+            Input.Hold(event[5], event[3] / self.Timebase)
         end
         
 
