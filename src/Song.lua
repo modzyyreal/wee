@@ -158,7 +158,7 @@ function Song:_parse(event)
             end)
         
         else
-            Input.Hold(event[5], event[3] / self.Timebase)
+            Input.Hold(event[5], event[3] / self.Timebase, event[6])
         end
         
 
