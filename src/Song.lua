@@ -129,10 +129,12 @@ end
 
 function Song:_parse(event)
     --[[
+
         Event:
             Event name  [String]
             Start time  [Number]
             ...
+
         Note:
             Event name  [String]
             Start time  [Number]
@@ -140,8 +142,11 @@ function Song:_parse(event)
             Channel     [Number]
             Pitch       [Number]
             Velocity    [Number]
+
     ]]
-if (eventName == "set_tempo") then
+    local eventName = event[1]
+
+    if (eventName == "set_tempo") then
         self._usPerBeat = event[3]
     elseif (eventName == "song_position") then
         self.TimePosition = (event[3] / self.Timebase)
@@ -149,8 +154,7 @@ if (eventName == "set_tempo") then
     elseif (eventName == "note") then
         Input.Hold(event[5], event[3] / self.Timebase)
     end
- end
-        
+end
 
 
 function Song.FromTitle(midiTitle)
