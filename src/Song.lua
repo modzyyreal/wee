@@ -166,12 +166,20 @@ function Song:_parse(event)
         self._usPerBeat = event[3]
         print("tempo changed to " .. event[3])
     elseif (eventName == "note") then
-            Input.Hold(event[5], event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6]) end
+        if self.MissPercent > 0 then
+            return
+            task.spawn(function()
+                local random = Random.new()
+                local random1 = chance(self.MissPercent)
+                local random2 = chance(self.MissPercent)
+                local random3 = chance(self.MissPercent)
+                if random1 then task.wait(math.random(0.1, 0.5)) end
+                if not random3 then Input.Hold(not random2 and event[5] or event[5] + random:NextInteger(-1,1), event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6]) end
+            end)
+        else
+            Input.Hold(event[5], event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6])
         end
-end
-end
-end
-end
+        
     elseif (eventName == "control_change") then
         if event[4] == 64 then
             if event[5] > getgenv().sustainOffset then
