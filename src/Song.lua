@@ -28,14 +28,6 @@ local function GetTimeLength(score)
     return length
 end
 
-local function chance(x) 
-    if math.random(1,100) <= x then 
-        return true
-    else 
-        return false
-    end  
-end  
-
 function Song.new(file)
     local score = MIDI.midi2score(readfile(file))
     local fullname = file:match("([^/^\\]+)$")
