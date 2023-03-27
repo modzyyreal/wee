@@ -96,7 +96,6 @@ function Song:Update(timePosition, lastTimePosition)
 end
 
 
-
 function Song:Step(deltaTime)
     self._lastTimePosition = self.TimePosition
     if (self._usPerBeat ~= 0) then
