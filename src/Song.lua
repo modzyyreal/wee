@@ -148,10 +148,9 @@ function Song:_parse(event)
     elseif (eventName == "song_position") then
         Input.Hold(event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6]) end
         print("set timeposition timebase", self.Timebase)
-    elseif (eventName == "note") then
+    elseif (eventName == "note") then end
         Input.Hold(event[5], event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6])
     end
-end
 end
 
     elseif (eventName == "control_change") then
