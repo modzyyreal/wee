@@ -147,7 +147,8 @@ function Song:_parse(event)
         self._usPerBeat = event[3]
         print("tempo changed to " .. event[3])
     elseif (eventName == "note") then
-           Input.Hold(event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6]) end
+           Input.Hold(event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6])
+    end
     else
             Input.Hold(event[5], event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6])
         end
