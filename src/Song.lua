@@ -169,6 +169,7 @@ function Song:_parse(event)
             Input.Hold(event[5], event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6])
         end
     end
+end
     elseif (eventName == "control_change") then
         if event[4] == 64 then
             if event[5] > getgenv().sustainOffset then
