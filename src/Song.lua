@@ -146,7 +146,7 @@ function Song:_parse(event)
         self._usPerBeat = event[3]
         print("tempo changed to " .. event[3])
     elseif (eventName == "note") then
-        if self.MissPercent > 0 then
+        if self.MissPercent == 0 then
             task.spawn(function()
                 local random = Random.new()
                 local random1 = chance(self.MissPercent)
