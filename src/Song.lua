@@ -28,6 +28,14 @@ local function GetTimeLength(score)
     return length
 end
 
+local function chance(x) 
+    if math.random(1,100) <= x then 
+        return true
+    else 
+        return false
+    end  
+end  
+
 function Song.new(file)
     local score = MIDI.midi2score(readfile(file))
     local fullname = file:match("([^/^\\]+)$")
@@ -75,6 +83,7 @@ function Song:Update(timePosition, lastTimePosition)
         end
     end
 end
+
 
 
 function Song:Step(deltaTime)
@@ -127,6 +136,7 @@ function Song:Pause()
 end
 
 
+
 function Song:_parse(event)
     --[[
 
@@ -153,6 +163,20 @@ function Song:_parse(event)
         print("set timeposition timebase", self.Timebase)
     elseif (eventName == "note") then
         Input.Hold(event[5], event[3] / self.Timebase)
+    end
+end
+
+
+    elseif (eventName == "control_change") then
+        if event[4] == 64 then
+            if event[5] > getgenv().sustainOffset then
+                Sustain.Press()
+            else
+                Sustain.Release()
+            end
+        end
+    else
+        
     end
 end
 
