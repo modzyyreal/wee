@@ -103,13 +103,13 @@ end
 
 function Song:Play()
     self._updateConnection = RunService.RenderStepped:Connect(function(dt)
-        self:Update(self.TimePosition, 0)
+        self:Update(self.TimePosition, self._lastTimePosition)
         self:Step(dt)
         if (self.TimePosition >= self.TimeLength) then
             self:Pause()
         end
     end)
-    self:Update(self.TimePosition, self._lastTimePosition)
+    self:Update(0, 0)
     self.IsPlaying = true
 end
 
