@@ -73,7 +73,7 @@ end
 
 function Song:Update(timePosition, lastTimePosition)
     for _,track in next, self._score, 1 do
-        local pos = (_ % 4) 
+        local pos = (_ % 8) 
         for _,event in ipairs(track) do
             if (event[1] == "note") then
                 local pitch = event[5]
