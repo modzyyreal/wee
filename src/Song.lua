@@ -93,7 +93,7 @@ function Song:JumpTo(timePosition)
 end
 
 
-unction Song:Play()
+function Song:Play()
     self._updateConnection = RunService.RenderStepped:Connect(function(dt)
         self:Update(self.TimePosition, self._lastTimePosition)
         self:Step(dt)
