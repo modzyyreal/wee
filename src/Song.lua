@@ -156,15 +156,15 @@ function Song:_parse(event)
     ]]
     local eventName = event[1]
 
-    if (eventName == "set_tempo") then
+   if (eventName == "set_tempo") then
         self._usPerBeat = event[3]
-    elseif (eventName == "song_position") then
-        self.TimePosition = (event[3] / self.Timebase)
-        print("set timeposition timebase", self.Timebase)
+        print("tempo changed to " .. event[3])
     elseif (eventName == "note") then
-        Input.Hold(event[5], event[3] / self.Timebase)
-    end
-end
+            Input.Hold(event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6]) end
+            end)
+        else
+            Input.Hold(event[5], event[3]  * (self._usPerBeat / self.Timebase / 1000000), event[6])
+        end
 
 
 
