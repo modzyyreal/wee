@@ -73,18 +73,7 @@ end
 
 function Song:Update(timePosition, lastTimePosition)
     for _,track in next, self._score, 1 do
-        local pos = (_ % 8) 
         for _,event in ipairs(track) do
-            if (event[1] == "note") then
-                local pitch = event[5]
-                if pos == 2 then
-                    getgenv().rightNotePitches = {}
-                    getgenv().rightNotePitches[pitch] = true
-                elseif pos == 3 then
-                    getgenv().leftNotePitches = {}
-                    getgenv().leftNotePitches[pitch] = true
-                end
-            end
             local eventTime = (event[2] / self.Timebase)
             if (timePosition >= eventTime) then
                 if (lastTimePosition <= eventTime) then
@@ -96,9 +85,10 @@ function Song:Update(timePosition, lastTimePosition)
 end
 
 
+
 function Song:Step(deltaTime)
     self._lastTimePosition = self.TimePosition
-    if (self._usPerBeat ~= 0.1) then
+    if (self._usPerBeat ~= 0) then
         self.TimePosition += (deltaTime / (self._usPerBeat / 1000000)) 
     else
         self.TimePosition += deltaTime
