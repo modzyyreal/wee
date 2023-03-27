@@ -98,7 +98,7 @@ end
 
 function Song:Step(deltaTime)
     self._lastTimePosition = self.TimePosition
-    if (self._usPerBeat ~= 0) then
+    if (self._usPerBeat ~= 0.1) then
         self.TimePosition += (deltaTime / (self._usPerBeat / 1000000)) 
     else
         self.TimePosition += deltaTime
