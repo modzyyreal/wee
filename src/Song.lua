@@ -149,7 +149,6 @@ if (eventName == "set_tempo") then
     elseif (eventName == "note") then
         Input.Hold(event[5], event[3] / self.Timebase)
     end
-end
         
 
     elseif (eventName == "control_change") then
