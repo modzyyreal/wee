@@ -176,6 +176,7 @@ function Song:_parse(event)
             else
                 Sustain.Release()
             end
+          end
         end
     else
         
