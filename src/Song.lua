@@ -101,7 +101,7 @@ function Song:JumpTo(timePosition)
 end
 
 
-function Song:Play()
+unction Song:Play()
     self._updateConnection = RunService.RenderStepped:Connect(function(dt)
         self:Update(self.TimePosition, self._lastTimePosition)
         self:Step(dt)
@@ -109,7 +109,7 @@ function Song:Play()
             self:Pause()
         end
     end)
-    self:Update(0, 0)
+    self:Update(self.TimePosition, self._lastTimePosition)
     self.IsPlaying = true
 end
 
